@@ -2,7 +2,7 @@
 
 # Introduction
 
-Act Auth is an open protocol with granularity of action to allow for more controllable authorization.
+Act Auth is an action-based open protocol for the next generation of the Internet.
 
 ## Origin
 ### Account granularity
