@@ -38,7 +38,7 @@ SnakeCaseBranchName = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul"
                       | "aug" | "sep" | "oct" | "nov" | "dec"
 ```
 
-Version naming follows Semantic Versioning [[]](https://semver.org/) rules:
+Version naming follows Semantic Versioning [[4]](#x.4.) rules:
 
 ```bash
 Version = ( MAJOR "." MINOR "." PATCH )
@@ -60,7 +60,7 @@ Under normal circumstances, each new feature or feature modification of Act Auth
 
 Strawman:
 
-Anyone at this stage can submit a draft proposal (different from "draft ").
+Anyone at this stage can submit a draft proposal (different from "draft").
 
 - The current submission channel is Github Issue, which will be migrated one after another after the official website goes online.
 - The official website provides a reporting mechanism, and the reported users will be restricted when submitting draft proposals.
@@ -132,3 +132,13 @@ Removal:
 
 - If the Act Auth Team members are insufficient, the minimum number of audit personnel can be changed as appropriate.
 - Persons on the restricted list are not allowed to participate in the feature adoption or modification except have already participated.
+
+# x. References
+
+<span id="x.1."></span>x.1. Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+<span id="x.2."></span>x.2. Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
+
+<span id="x.3."></span>x.3. Coded Character Set--7-Bit American Standard Code for Information Interchange, ANSI X3.4-1986.
+
+<span id="x.4."></span>x.4. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
