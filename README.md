@@ -35,7 +35,7 @@ PascalCaseLibraryName = SnakeCaseName "_" SnakeCaseBranchName
 PascalCaseBranchName = "Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul"
                        | "Aug" | "Sep" | "Oct" | "Nov" | "Dec"
 SnakeCaseBranchName = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul"
-                       | "aug" | "sep" | "oct" | "nov" | "dec"
+                      | "aug" | "sep" | "oct" | "nov" | "dec"
 ```
 
 Version naming follows Semantic Versioning [[]](https://semver.org/) rules:
