@@ -9,7 +9,110 @@ In the Internet, various kinds of information transfer are generated every day, 
 
 In transmission, since the information is relatively private and the relative private Internet can be used, while various authentication methods can be used in the public Internet. However, most of the restrictions on information still relied on multi-party agreements or real world laws and regulations, such as restrictions on the use of personal privacy information. So Act Auth is designed to be a protocol that can achieve relatively reliable information transmission and restriction in a low-confidence public Internet environment.
 
-# 2.
+# 2. Notational and Terminology Conventions
+
+## 2.1. Key words
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [[1]](#x.1.).
+
+## 2.2. Object-Oriented Augmented Backus-Naur Form
+
+All of the syntax and mechanisms specified in this document are described in both prose and an object-oriented _Augmented Backus-Naur Form_ (_ABNF_) that defined by RFC 2234 [[2]](#x.2.) unless stated otherwise. Implementers will need to be familiar with the notation in order to understand this specification. The object-oriented ABNF includes the following constructs:
+
+```
+name = definition
+```
+
+The name of a rule is simply the name itself and case sensitive, and separated from its definition by the equal `=` character.
+
+```
+implied *LWS
+```
+
+The grammar described by this specification is word-based. Except where noted otherwise,  linear whitespace (LWS) can be included between any two adjacent words (token or quoted-string), and between adjacent tokens and delimiters (tspecials), without changing the interpretation of a field. At least one delimiter (tspecials) must exist between any two tokens, since they would otherwise be interpreted as a single token.
+
+```
+name = multi-line
+       definition
+```
+
+The indentation consisting of the same number of SPs is used to indicate a rule definition that spans more than one line. Other WSs have no special meaning except for separating text.
+
+```
+name = <rule name or rule description>
+```
+
+Angle brackets are used in the definition to distinguish each rule name to make it more recognizable. For rules that require a literal description can also be enclosed in angle brackets to indicate that the words of the statement are not separate elements.
+
+```
+"literal"
+```
+
+Quotation marks surround literal text. Unless stated otherwise, the text is case-insensitive.
+
+```
+rule1 | rule2
+```
+
+Elements separated by a bar ("|") are alternatives, e.g., "yes | no" will accept yes or no.
+
+```
+(rule1 rule2)
+```
+
+Elements enclosed in parentheses are treated as a single element. Thus, "(elem (foo | bar) elem)" allows the token sequences "elem foo elem" and "elem bar elem".
+
+```
+*#rule
+```
+
+The character "\*" and "#" preceding an element indicates repetition and separation. The full form is "\<n\>\*\<m\>#\<c\>element" indicating at least \<n\> and at most \<m\> occurrences of element, each separated by \<c\>. Null elments are allowed in an explicitly declared way, e.g., "\*\#SP( \*ALPHA )" allows the token sequences "ab cd    ef". Default values are 0 and infinity so that "\*(element)" allows any number of elements, including zero; "1\*element" requires at least one; and "1\*2\#SP(element)" allows one or two and separated by SP.
+
+```
+[rule1, rule2]
+```
+
+Square brackets are used to indicate the list. The list allows any number of elements, including zero. The extended form is "\[\<n\>\*\<m\>element\]" indicating a list including at least \<n\> and at most \<m\> occurrences of element. Thus, "\[foo, bar\]" means a list including foo and bar in order, "\[\*(\*CHAR)\]" means a list including any number of strings with arbitrary length.
+
+```
+rule1{rule2, rule3}
+```
+
+Curly brackets are used to indicate the mapping, and nested to express objects, e.g., "o{a{r}, b}" means an object including two attributes "a{r}" and "b", and"a" maps to "r".
+
+```
+N rule
+```
+
+Specific repetition: "\<n\>(element)" is equivalent to "\<n\>\*\<n\>(element)"; that is, exactly \<n\> occurrences of (element). Thus 2DIGIT is a 2-digit number, and 3ALPHA is a string of three alphabetic characters.
+
+```
+; comment
+```
+
+A semi-colon, set off some distance to the right of rule text, starts a comment that continues to the end of line. This is a simple way of including useful notes in parallel with the specifications.
+
+## 2.3. Basic Rules
+
+The following rules are used throughout this specification to describe basic parsing constructs. The US-ASCII coded character set is defined by ANSI X3.4-1986 [[3]](#x.3.).
+
+```
+OCTET    =  <any 8-bit sequence of data>
+CHAR     =  <any US-ASCII character (octets 0 - 127)>
+UPALPHA  =  <any US-ASCII uppercase letter "A".."Z">
+LOALPHA  =  <any US-ASCII lowercase letter "a".."z">
+ALPHA    =  UPALPHA | LOALPHA
+DIGIT    =  <any US-ASCII digit "0".."9">
+CTL      =  <any US-ASCII control character
+            (octets 0 - 31) and DEL (127)>
+CR       =  <US-ASCII CR, carriage return (13)>
+LF       =  <US-ASCII LF, linefeed (10)>
+SP       =  <US-ASCII SP, space (32)>
+HT       =  <US-ASCII HT, horizontal-tab (9)>
+<">      =  <US-ASCII double-quote mark (34)>
+WS       =  1*SP
+LWS      =  [ LF ] 1*( SP | HT )
+```
 
 # 3. Specification Management
 
