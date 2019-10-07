@@ -29,7 +29,7 @@ The name of a rule is simply the name itself and case sensitive, and separated
 implied *LWS
 ```
 
-The grammar described by this specification is word-based. Except where noted otherwise,  linear whitespace (LWS) can be included between any two adjacent words (token or quoted-string), and between adjacent tokens and delimiters (tspecials), without changing the interpretation of a field. At least one delimiter (tspecials) must exist between any two tokens, since they would otherwise be interpreted as a single token.
+The grammar described by this specification is word-based. Except where noted otherwise,  linear whitespace (LWS) can be included between any two adjacent words (token or quoted-string), and between adjacent tokens and delimiters (tspecials), without changing the interpretation of a field. At least one delimiter (tspecials) MUST exist between any two tokens, since they would otherwise be interpreted as a single token.
 
 ```
 name = multi-line
@@ -78,13 +78,13 @@ Square brackets are used to indicate the list. The list allows any number of ele
 rule1{rule2, rule3}
 ```
 
-Curly brackets are used to indicate the mapping, and nested to express objects, e.g., "o{a{r}, b}" means an object including two attributes "a{r}" and "b", and"a" maps to "r".
+Curly brackets are used to indicate the mapping, and nested to express objects, e.g., "o{a{r}, b}" means an object including two attributes "a{r}" and "b", and "a" maps to "r".
 
 ```
 N rule
 ```
 
-Specific repetition: "\<n\>(element)" is equivalent to "\<n\>\*\<n\>(element)"; that is, exactly \<n\> occurrences of (element). Thus 2DIGIT is a 2-digit number, and 3ALPHA is a string of three alphabetic characters.
+Specific repetition: "\<n\>(element)" is equivalent to "\<n\>\*\<n\>(element)"; that is, exactly \<n\> occurrences of (element). Thus "2DIGIT" is a 2-digit number, and "3ALPHA" is a string of three alphabetic characters.
 
 ```
 ; comment
@@ -130,7 +130,7 @@ PascalCaseName = "ActAuth"
 SnakeCaseName = "act_auth"
 ```
 
-The branch name of Act Auth is picked from the English word in the twelve month of the Gregorian calendar. The first three letters of the branch name can be taken as abbreviations, or added as suffixes of program libraries names according to pascal case and snake case rules:
+The branch name of Act Auth SHOULD be picked from the English word in the twelve month of the Gregorian calendar. The first three letters of the branch name can be taken as abbreviations, or added as suffixes of program libraries names according to pascal case and snake case rules:
 
 ```
 PascalCaseLibraryName = PascalCaseName PascalCaseBranchName
@@ -171,26 +171,25 @@ Proposal:
 
 A formal proposal is generated at this stage.
 
-- Determine proposal head (or combine head), head (Or co-owner) Must be from the Act Auth Team.
-- Describe the problems and application scenarios that need to be solved. The solution must include logical descriptions or (pseudo) code examples, as well as related theories that may be involved.
+- Describe the problems and application scenarios that need to be solved. The solution SHOULD include logical descriptions or (pseudo) code examples, as well as related theories that may be involved.
 - Describe potential problems that may exist and their relationships with other features.
-- This phase allows the responsible person (Or co-responsible persons) adopt and absorb draft proposals from stage 0, and allow members of draft proposals to be included in current proposal members.
+- This phase allows the responsible person (or co-responsible persons) adopt and absorb draft proposals from Strawman stage, and allow members of draft proposals to be included in current proposal members.
 
 Draft:
 
 The draft generated at this stage is the first version of the new feature specification.
 
 - In principle, the draft only accepts incremental modification.
-- Must contain sufficient logical descriptions and (pseudo) code examples.
-- If it affects features that already exist in the standard, compatibility or migration solutions must be provided.
+- SHOULD contain sufficient logical descriptions and (pseudo) code examples.
+- If it affects features that already exist in the specification, compatibility or migration solutions SHOULD be provided.
 
 Candidate:
 
-In the candidate phase, complete feature standard documents and test cases are provided, and developers try to implement them and give feedback.
+In the candidate phase, complete feature documents and test cases are provided, and developers try to implement them and give feedback.
 
 Finished:
 
-Ready, this proposal will be included in the next version of the standard.
+Ready, this proposal will be included in the next version of the specification.
 
 ## 3.3. Audit Rules
 
