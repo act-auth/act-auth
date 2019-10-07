@@ -120,7 +120,7 @@ Certain security-related terms are to be understood in the sense RFC 4949 [[4]](
 
 \$ account
 
-A user of application program is a person or an organization who utilizes the application. A user usually has one or more accounts in an application so that the application can identify different users to provide services separately. But it is not always a person or an organization that directly uses an account to access services. It is also possible that another process or service is accessing services on behalf of a person or an organization.
+A user of application program is a person or an organization who utilizes the application. A user usually has one or more accounts in an application so that the application can identify different users to provide services separately. But it is not always a person or an organization that directly uses an account to access services. It is also possible that another process or application program is accessing services on behalf of a person or an organization.
 
 \$ authentication
 
