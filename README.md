@@ -116,7 +116,33 @@ LWS      =  [ LF ] 1*( SP | HT )
 
 ## 2.4. Terminology
 
-Certain security-related terms are to be understood in the sense RFC 4949 [4]. These terms include, but are not limited to, "access", "access control", "authentication", "authorization", "capability token", "decode", "encode", "hash value", "identity", "secret key", "sign", "signature", "validate", and "verify".
+Certain security-related terms are to be understood in the sense RFC 4949 [4]. These terms include, but are not limited to, "access", "access control", "decode", "encode", "hash value", "identity", "sign", "validate", and "verify".
+
+\$ account
+
+A user of application program is a person or an organization who utilizes the application. A user usually has one or more accounts in an application so that the application can identify different users to provide services separately. But it is not always a person or an organization that directly uses an account to access services. It is also possible that another process or service is accessing services on behalf of a person or an organization.
+
+\$ authentication
+
+The process of verifying a claim that a system entity or system resource has a certain attribute value.
+
+\$ authorization
+
+a. An approval that is granted to a system entity to access a system resource.
+
+b. A process for granting approval to a system entity to access a system resource.
+
+\$ capability token
+
+A token (usually an unforgeable data object) that gives the bearer or holder the right to access a system resource. Possession of the token is accepted by a system as proof that the holder has been authorized to access the resource indicated by the token.
+
+\$ private key
+
+The secret component of a pair of cryptographic keys used for asymmetric cryptography.
+
+\$ signature
+
+A symbol or process adopted or executed by a system entity with present intention to declare that a data object is genuine.
 
 # 3. Specification Management
 
