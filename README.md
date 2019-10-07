@@ -272,6 +272,34 @@ Removal:
 - If the Act Auth Team members are insufficient, the minimum number of audit personnel can be changed as appropriate.
 - Persons on the restricted list are not allowed to participate in the feature adoption or modification except have already participated.
 
+# 4. Centralized Account Model
+
+With the mainstream technology in the times of writing this document, January branch of Act Auth adopts a centralized account model for engineering implementation.
+
+In the centralized account model, account authentication information, such as account identifier, account secret key and so on, is stored in the same storage device or in the same storage cluster. Whether it is stored in centralized database or distributed database, it does not change the nature of centralized account processing. Account authentication information can be stored in multiple copies in case, but only one of them is enabled to avoid data inconsistency caused by read-write conflicts.
+
+## 4.1. Account Registration
+
+Any user who needs to access the services provided by the application program needs to register an account in the application first.
+
+Account registration is not within the scope of this specification, but it usually requires end-users to submit forms through Web pages or native applications, or other application programs to submit forms by HTTP requests.
+
+When an account is being registered, the application program SHALL:
+
+- be clear about the type of this account as described in [Section 4.1.1](#411-account-types),
+- generate internal identifiers, external identifiers and private key for this account refer to [Section 4.1.2](#412-internal-account-identifier) and [Section 4.1.3](#413-external-account-identifier),
+- store the identifiers and other necessary identity information in access control center or the location that access control center has access to.
+
+When an application program contains multiple services, besides end-users and other application programs that need to access services, these services can also form components of the application program independently. After registering account on the access control center, data interaction can be carried out, which is particularly useful for multi-server application programs in non-private networks.
+
+### 4.1.1. Account Types
+
+### 4.1.2. Internal Account Identifier
+
+### 4.1.3. External Account Identifier
+
+### 4.1.4. Account Metadata
+
 # 7. References
 
 <span id="7.1."></span>7.1. Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
@@ -285,3 +313,5 @@ Removal:
 <span id="7.5."></span>7.5. chrisdavidmills, klez, hbloomer, Andrew_Pfeiffer, "Native - MDN Web Docs Glossary: Definitions of Web-related terms", Mar 2019.
 
 <span id="7.6."></span>7.6. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+
+<span id="7.7."></span>7.7. Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
