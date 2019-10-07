@@ -15,9 +15,9 @@ In transmission, since the information is relatively private and the relative pr
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [[1]](#x.1.).
 
-## 2.2. Object-Oriented Augmented Backus-Naur Form
+## 2.2. Augmented Backus-Naur Form for Objects
 
-All of the syntax and mechanisms specified in this document are described in both prose and an object-oriented _Augmented Backus-Naur Form_ (_ABNF_) that defined by RFC 2234 [[2]](#x.2.) unless stated otherwise. Implementers will need to be familiar with the notation in order to understand this specification. The object-oriented ABNF includes the following constructs:
+All of the syntax and mechanisms specified in this document are described in both prose and the Augmented Backus-Naur Form for Objects (OABNF) based on Augmented Backus-Naur Form (ABNF) that defined by RFC 2234 [[2]](#x.2.) unless stated otherwise. Implementers will need to be familiar with the notation in order to understand this specification. The OABNF includes the following constructs:
 
 ```
 name = definition
