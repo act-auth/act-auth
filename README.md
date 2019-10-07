@@ -116,7 +116,7 @@ LWS      =  [ LF ] 1*( SP | HT )
 
 ## 2.4. Terminology
 
-Certain security-related terms are to be understood in the sense RFC 4949 [4]. These terms include, but are not limited to, "access", "access control", "decode", "encode", "hash value", "identity", "sign", "validate", and "verify".
+Certain security-related terms are to be understood in the sense RFC 4949 [[4]](#7.4.). These terms include, but are not limited to, "access", "access control", "decode", "encode", "hash value", "identity", "sign", "validate", and "verify".
 
 \$ account
 
