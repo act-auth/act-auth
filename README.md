@@ -124,7 +124,7 @@ Initially, Act Auth was designed to improve the controllability of resource auth
 
 In text representation, including this document, the normative naming of "Act Auth" consists of two case-sensitive words "Act" and "Auth", and separated by a single space. Following the grammar and naming rules of each programming language, the naming of libraries can be either pascal case or snake case:
 
-```bash
+```
 DocumentName = "Act Auth"
 PascalCaseName = "ActAuth"
 SnakeCaseName = "act_auth"
@@ -132,7 +132,7 @@ SnakeCaseName = "act_auth"
 
 The branch name of Act Auth is picked from the English word in the twelve month of the Gregorian calendar. The first three letters of the branch name can be taken as abbreviations, or added as suffixes of program libraries names according to pascal case and snake case rules:
 
-```bash
+```
 PascalCaseLibraryName = PascalCaseName PascalCaseBranchName
 PascalCaseLibraryName = SnakeCaseName "_" SnakeCaseBranchName
 PascalCaseBranchName = "Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul"
@@ -143,12 +143,11 @@ SnakeCaseBranchName = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul"
 
 Version naming follows Semantic Versioning [[4]](#x.4.) rules:
 
-```bash
+```
 Version = ( MAJOR "." MINOR "." PATCH )
-MAJOR = NonnegativeInteger
-MINOR = NonnegativeInteger
-PATCH = NonnegativeInteger
-NonnegativeInteger = < integer greater than or equal to 0 >
+MAJOR = 1*DIGIT
+MINOR = 1*DIGIT
+PATCH = 1*DIGIT
 ```
 
 In the active state, the replacement of the main version number means that there are destructive updates and new features; a downward compatible version with new features is released regularly with the replacement of the minor version number; defect fixes or chores are merged into the new revision version from time to time, depending on the situation. The replacement frequency of the minor version number and the patch version number is determined by the specific implementer.
