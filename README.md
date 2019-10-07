@@ -136,6 +136,10 @@ b. A process for granting approval to a system entity to access a system resourc
 
 A token (usually an unforgeable data object) that gives the bearer or holder the right to access a system resource. Possession of the token is accepted by a system as proof that the holder has been authorized to access the resource indicated by the token.
 
+\$ native application
+
+"A native application has been compiled to run on the hardware/software environment that comprises the targeted architecture. An example of a native Android app would be a mobile application written in Java using the Android toolchain. On the other hand, a Web App that runs inside a browser is not native — it is run in the web browser, which sits on top of the native environment, not the native environment itself." [[5]](#7.5.)
+
 \$ private key
 
 The secret component of a pair of cryptographic keys used for asymmetric cryptography.
@@ -175,7 +179,7 @@ SnakeCaseBranchName = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul"
                       | "aug" | "sep" | "oct" | "nov" | "dec"
 ```
 
-Version naming follows Semantic Versioning [[5]](#7.5.) rules:
+Version naming follows Semantic Versioning [[6]](#7.6.) rules:
 
 ```
 Version = ( MAJOR "." MINOR "." PATCH )
@@ -278,4 +282,6 @@ Removal:
 
 <span id="7.4."></span>7.4. Shirey, R., "Internet Security Glossary, Version 2", RFC 4949, August 2007.
 
-<span id="7.5."></span>7.5. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+<span id="7.5."></span>7.5. chrisdavidmills, klez, hbloomer, Andrew_Pfeiffer, "Native - MDN Web Docs Glossary: Definitions of Web-related terms", Mar 2019.
+
+<span id="7.6."></span>7.6. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
