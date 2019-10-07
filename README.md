@@ -124,7 +124,7 @@ Act Auth is continuously revised and updated in order to adapt to the changing 
 
 ## 3.1. Branch and Version Control
 
-Initially, Act Auth was designed to improve the controllability of resource authorization. But in the process of conceiving, it is found that this goal is incompatible with the existing mainstream technology architecture in the case of insufficient mutual trust between the authorizing party and the authorized party. It was eventually decided that dividing Act Auth into several parallel branches for design, under different technical foundations and application environments.
+Initially, Act Auth was designed to improve the controllability of resource authorization. But in the process of conceiving, it is found that this goal is incompatible with the existing mainstream technology architecture in the case of insufficient mutual trust between the authorizing party and the authorized party. It was eventually decided that dividing Act Auth into several parallel branches for design, under different technical foundations and application program environments.
 
 In text representation, including this document, the normative naming of "Act Auth" consists of two case-sensitive words "Act" and "Auth", and separated by a single space. Following the grammar and naming rules of each programming language, the naming of libraries can be either pascal case or snake case:
 
