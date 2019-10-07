@@ -144,6 +144,10 @@ The secret component of a pair of cryptographic keys used for asymmetric cryptog
 
 A symbol or process adopted or executed by a system entity with present intention to declare that a data object is genuine.
 
+\$ storage repository
+
+Available hardware and software facilities that can provide storage services for an appropriate length of time with both read and write functions usually, such as file systems, stand-alone databases, database clusters, etc.
+
 # 3. Specification Management
 
 Act Auth is continuously revised and updated in order to adapt to the changing practical background. In order to avoid confusion, the content of revision and update needs to undergo a strict and unified audit process, and be distinguished by different identifications. This section elaborates the above content and other specification management rules.
