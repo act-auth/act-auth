@@ -11,13 +11,13 @@ In transmission, since the information is relatively private and the relative pr
 
 # 2. Notational and Terminology Conventions
 
-## 2.1. Key words
+## 2.1. Key Words
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [[1]](#x.1.).
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [[1]](#7.1.).
 
 ## 2.2. Augmented Backus-Naur Form for Objects
 
-All of the syntax and mechanisms specified in this document are described in both prose and the Augmented Backus-Naur Form for Objects (OABNF) based on Augmented Backus-Naur Form (ABNF) that defined by RFC 2234 [[2]](#x.2.) unless stated otherwise. Implementers will need to be familiar with the notation in order to understand this specification. The OABNF includes the following constructs:
+All of the syntax and mechanisms specified in this document are described in both prose and the Augmented Backus-Naur Form for Objects (OABNF) based on Augmented Backus-Naur Form (ABNF) that defined by RFC 2234 [[2]](#7.2.) unless stated otherwise. Implementers will need to be familiar with the notation in order to understand this specification. The OABNF includes the following constructs:
 
 ```
 name = definition
@@ -94,7 +94,7 @@ A semi-colon, set off some distance to the right of rule text, starts a comment
 
 ## 2.3. Basic Rules
 
-The following rules are used throughout this specification to describe basic parsing constructs. The US-ASCII coded character set is defined by ANSI X3.4-1986 [[3]](#x.3.).
+The following rules are used throughout this specification to describe basic parsing constructs. The US-ASCII coded character set is defined by ANSI X3.4-1986 [[3]](#7.3.).
 
 ```
 OCTET    =  <any 8-bit sequence of data>
@@ -113,6 +113,10 @@ HT       =  <US-ASCII HT, horizontal-tab (9)>
 WS       =  1*SP
 LWS      =  [ LF ] 1*( SP | HT )
 ```
+
+## 2.4. Terminology
+
+Certain security-related terms are to be understood in the sense RFC 4949 [4]. These terms include, but are not limited to, "access", "access control", "authentication", "authorization", "capability token", "decode", "encode", "hash value", "identity", "secret key", "sign", "signature", "validate", and "verify".
 
 # 3. Specification Management
 
@@ -141,7 +145,7 @@ SnakeCaseBranchName = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul"
                       | "aug" | "sep" | "oct" | "nov" | "dec"
 ```
 
-Version naming follows Semantic Versioning [[4]](#x.4.) rules:
+Version naming follows Semantic Versioning [[5]](#7.5.) rules:
 
 ```
 Version = ( MAJOR "." MINOR "." PATCH )
@@ -234,12 +238,14 @@ Removal:
 - If the Act Auth Team members are insufficient, the minimum number of audit personnel can be changed as appropriate.
 - Persons on the restricted list are not allowed to participate in the feature adoption or modification except have already participated.
 
-# x. References
+# 7. References
 
-<span id="x.1."></span>x.1. Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
+<span id="7.1."></span>7.1. Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
 
-<span id="x.2."></span>x.2. Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
+<span id="7.2."></span>7.2. Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
 
-<span id="x.3."></span>x.3. Coded Character Set--7-Bit American Standard Code for Information Interchange, ANSI X3.4-1986.
+<span id="7.3."></span>7.3. Coded Character Set--7-Bit American Standard Code for Information Interchange, ANSI X3.4-1986.
 
-<span id="x.4."></span>x.4. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+<span id="7.4."></span>7.4. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+
+<span id="7.5."></span>7.5. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
