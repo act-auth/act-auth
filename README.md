@@ -246,6 +246,6 @@ Removal:
 
 <span id="7.3."></span>7.3. Coded Character Set--7-Bit American Standard Code for Information Interchange, ANSI X3.4-1986.
 
-<span id="7.4."></span>7.4. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+<span id="7.4."></span>7.4. Shirey, R., "Internet Security Glossary, Version 2", RFC 4949, August 2007.
 
 <span id="7.5."></span>7.5. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
