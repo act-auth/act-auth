@@ -120,37 +120,37 @@ Certain security-related terms are to be understood in the sense RFC 4949 [[4]](
 
 \$ account
 
-A user of application program is a person or an organization who utilizes the application. A user usually has one or more accounts in an application so that the application can identify different users to provide services separately. But it is not always a person or an organization that directly uses an account to access services. It is also possible that another application program is accessing services on behalf of a person or an organization.
+      A user of application program is a person or an organization who utilizes the application. A user usually has one or more accounts in an application so that the application can identify different users to provide services separately. But it is not always a person or an organization that directly uses an account to access services. It is also possible that another application program is accessing services on behalf of a person or an organization.
 
 \$ authentication
 
-The process of verifying a claim that a system entity or system resource has a certain attribute value.
+      The process of verifying a claim that a system entity or system resource has a certain attribute value.
 
 \$ authorization
 
-a. An approval that is granted to a system entity to access a system resource.
+      a. An approval that is granted to a system entity to access a system resource.
 
-b. A process for granting approval to a system entity to access a system resource.
+      b. A process for granting approval to a system entity to access a system resource.
 
 \$ capability token
 
-A token (usually an unforgeable data object) that gives the bearer or holder the right to access a system resource. Possession of the token is accepted by a system as proof that the holder has been authorized to access the resource indicated by the token.
+      A token (usually an unforgeable data object) that gives the bearer or holder the right to access a system resource. Possession of the token is accepted by a system as proof that the holder has been authorized to access the resource indicated by the token.
 
 \$ native application
 
-"A native application has been compiled to run on the hardware/software environment that comprises the targeted architecture. An example of a native Android app would be a mobile application written in Java using the Android toolchain. On the other hand, a Web App that runs inside a browser is not native — it is run in the web browser, which sits on top of the native environment, not the native environment itself." [[5]](#7.5.)
+      "A native application has been compiled to run on the hardware/software environment that comprises the targeted architecture. An example of a native Android app would be a mobile application written in Java using the Android toolchain. On the other hand, a Web App that runs inside a browser is not native — it is run in the web browser, which sits on top of the native environment, not the native environment itself." [[5]](#7.5.)
 
 \$ private key
 
-The secret component of a pair of cryptographic keys used for asymmetric cryptography.
+      The secret component of a pair of cryptographic keys used for asymmetric cryptography.
 
 \$ signature
 
-A symbol or process adopted or executed by a system entity with present intention to declare that a data object is genuine.
+      A symbol or process adopted or executed by a system entity with present intention to declare that a data object is genuine.
 
 \$ storage repository
 
-Available hardware and software facilities that can provide storage services for an appropriate length of time with both read and write functions usually, such as file systems, stand-alone databases, database clusters, etc.
+      Available hardware and software facilities that can provide storage services for an appropriate length of time with both read and write functions usually, such as file systems, stand-alone databases, database clusters, etc.
 
 # 3. Specification Management
 
@@ -290,9 +290,37 @@ When an account is being registered, the application program SHALL:
 - generate internal identifiers, external identifiers and private key for this account refer to [Section 4.1.2](#412-internal-account-identifier) and [Section 4.1.3](#413-external-account-identifier),
 - store the identifiers and other necessary identity information in access control center or the location that access control center has access to.
 
-When an application program contains multiple services, besides end-users and other application programs that need to access services, these services can also form components of the application program independently. After registering account on the access control center, data interaction can be carried out, which is particularly useful for multi-server application programs in non-private networks.
-
 ### 4.1.1. Account Types
+
+Account types are typically delimited according to the services of the application program they access. If the application program only provides one service, there is usually only one type of account; If an application program provides two services, there are usually at most three types of accounts. For example, if a todo-list application program provides both read and write services, it MAY contain up to three types of accounts:
+
+read-account
+
+      An account type that can only read todo items from todo-list.
+
+write-account
+
+      An account type that can only write todo items to todo-list.
+
+read-write-account
+
+      An account type that can either write todo items to or read todo items from todo-list.
+
+In addition, if there are other services, such as different accounts can read different todo items, and / or background management services, there will be more possible account types. However, it is not necessary to enumerate all the account types in the practical application program. It is enough to delimit and design the account types that are actually needed.
+
+The specific delimitation of account types is determined by the designer and developer of the application program. Here are some common scenarios of account type delimitation.
+
+end user
+
+      End users of services provided by the application program are the most common type of account. For example, the core service provided by Notepad is a long-term storage repository that can be read and written, and its end users are the people who can access this service or other programs with ability and permission to access (e.g. crawlers). There may be more divisions under this. More types of accounts may be subdivided, depending on actual demands.
+
+application program component
+
+      An application program (or a project) with complex implementations may be designed and developed into multiple parts that provide internal and / or external services respectively, e.g., log services, gateway services. These parts can be referred to as components of an application program (or project). Application program components also need to access each other's services, e.g., gateway components may need to access services provided by log components to persist access records. Usually when application program components access each other's services through a non-private network, there also need to be access control, and then these application program components become a special type of account.
+
+third-party
+
+      This type of accounts is similar to the aforementioned "application program component", except that the registrants of this type of accounts are not parts of the application program (or project), but the "third-party" that provide services independently. Some of services provided by "third-party" MAY depend on the account system (or other data) of the application program, e.g., "Login with Google".
 
 ### 4.1.2. Internal Account Identifier
 
