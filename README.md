@@ -290,7 +290,7 @@ When an account is being registered, the application program SHALL:
 
 - be clear about the type of this account as described in [Section 4.1.1](#411-account-types),
 - generate internal identifiers, external identifiers and private key for this account refer to [Section 4.1.2](#412-internal-account-identifier) and [Section 4.1.3](#413-external-account-identifier),
-- store the identifiers and other necessary identity information in access control center or the location that access control center has access to.
+- store the identifiers and other necessary identity information in authentication center or the location that authentication center has access to.
 
 ### 4.1.1. Account Types
 
@@ -318,7 +318,7 @@ End users of services provided by the application program are the most common ty
 
 application program component
 
-An application program (or a project) with complex implementations may be designed and developed into multiple parts that provide internal and / or external services respectively, e.g., log services, gateway services. These parts can be referred to as components of an application program (or project). Application program components also need to access each other's services, e.g., gateway components may need to access services provided by log components to persist access records. Usually when application program components access each other's services through a non-private network, there also need to be access control, and then these application program components become a special type of account.
+An application program (or a project) with complex implementations may be designed and developed into multiple parts that provide internal and / or external services respectively, e.g., log services, gateway services. These parts can be referred to as components of an application program (or project). Application program components also need to access each other's services, e.g., gateway components may need to access services provided by log components to persist access records. Usually when application program components access each other's services through a non-private network, there also need to be authentication center, and then these application program components can be counted as a special type of account to achieve access control.
 
 third-party
 
