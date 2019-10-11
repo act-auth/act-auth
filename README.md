@@ -331,23 +331,23 @@ The internal account identifier is a unique integer (or string, tuple, etc.) rep
 The internal account identifier SHOULD be globally unique in an application program, regardless of the account type, but the generation of identifiers can be related to the account type. If the account information of an application program needs to be stored in different contexts (e.g., divide into different tables according to the account type), it is RECOMMENDED that all account identifiers (rather than the full amount of account information) be duplicated in the same context and stored in one more copy in order to ensure the uniqueness of the identifiers. Take relational database as an example:
 
 ```
-                                     +------------------------------+
-                                     | end-user                     |
-                                     |------------------------------|
-                                     | internal id | nickname | age |
-+---------------------------+        |-------------|----------|-----|
-|          account          |     /->| 1           | alice    | 20  |
-|---------------------------|    //->| 2           | bob      | 23  |
-| internal id | type        |   //   +------------------------------+
-|-------------|-------------|  //
-| 1           | end-user    |_//
-| 2           | end-user    |_/      +------------------------------+
-| 3           | third-party |_       | third-party                  |
-+---------------------------+ \      |------------------------------|
-                               \     | internal id | key  | orgname |
-                                \    |-------------|------|---------|
-                                 \-->| 3           | abcd | mofon   |
-                                     +------------------------------+
+                                  +------------------------------+
+                                  | end-user                     |
+                                  |------------------------------|
+                                  | internal id | nickname | age |
++---------------------------+     |-------------|----------|-----|
+|          account          | +-->| 1           | alice    | 20  |
+|---------------------------| |+->| 2           | bob      | 23  |
+| internal id | type        | ||  +------------------------------+
+|-------------|-------------| ||
+| 1           | end-user    |-+|
+| 2           | end-user    |--+  +------------------------------+
+| 3           | third-party |-+   | third-party                  |
++---------------------------+ |   |------------------------------|
+                              |   | internal id | key  | orgname |
+                              |   |-------------|------|---------|
+                              +-->| 3           | abcd | mofon   |
+                                  +------------------------------+
 ```
 
 Except for the uniqueness of internal account identifiers, this specification does not specify any other restrictions. Since the internal account identifier is only used within the application program, there can be some internal conventions for identifier, e.g., the data type, length, generation method and so on.
