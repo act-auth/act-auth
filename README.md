@@ -326,7 +326,7 @@ This type of accounts is similar to the aforementioned "application program comp
 
 ### 4.1.2. Internal Account Identifier
 
-The internal account identifier is a unique integer (or string, tuple, etc.) representing the registration information provided by the registrant, and used to uniquely identify the information and other resources owned by the registrant within the application program. As the name implies, internal account identifiers SHOULD only be used internally in the authentication center of the application program, unless the internal account identifier is the same as the external account identifier value (strongly NOT RECOMMENDED).
+The internal account identifier is a unique integer (or string, tuple, etc.) representing the registration information provided by the registrant, and used to uniquely identify the information and other resources owned by the registrant within the application program. As the name implies, internal account identifiers SHOULD only be used internally in the authentication center of the application program, unless the internal account identifier is the same as the external account identifier value (strongly NOT RECOMMENDED). If the authentication link is built into the application program, the internal account identifier can be used throughout the application program.
 
 The internal account identifier SHOULD be globally unique in an application program, regardless of the account type, but the generation of identifiers can be related to the account type. If the account information of an application program needs to be stored in different contexts (e.g., divide into different tables according to the account type), it is RECOMMENDED that all account identifiers (rather than the full amount of account information) be duplicated in the same context and stored in one more copy in order to ensure the uniqueness of the identifiers. Take relational database as an example:
 
@@ -354,7 +354,15 @@ Except for the uniqueness of internal account identifiers, this specification do
 
 ### 4.1.3. External Account Identifier
 
+The external account identifier is a unique integer (or string, tuple, etc.) mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
+
+The external account identifier SHOULD also be globally unique in the application program. An internal account identifier can be mapped to multiple external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
+
+The distinction between internal account identifier and external account identifier means that any one of the external account identifiers of an account can be mapped to the internal account identifier, and then to part or all of the information and resources owned by the account stored explicitly or implicitly in the application program. As mentioned in [Section 5](#5-connect-account), this distinction helps to improve account owner and / or application program control over data that authorized to third-party. If the application program does not need to consider this situation, there can be one more limitation that an internal account identifier must be mapped to only one external account identifier.
+
 ### 4.1.4. Account Metadata
+
+# 5. Connect Account
 
 # 7. References
 
