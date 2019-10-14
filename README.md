@@ -31,7 +31,7 @@ The name of a rule is simply the name itself and case sensitive, and separated
 implied *LWS
 ```
 
-The grammar described by this specification is word-based. Except where noted otherwise,  linear whitespace (LWS) can be included between any two adjacent words (token or quoted-string), and between adjacent tokens and delimiters (tspecials), without changing the interpretation of a field. At least one delimiter (tspecials) MUST exist between any two tokens, since they would otherwise be interpreted as a single token.
+The grammar described by this specification is word-based. Except where noted otherwise, linear whitespace (LWS) can be included between any two adjacent words (token or quoted-string), and between adjacent tokens and delimiters (tspecials), without changing the interpretation of a field. At least one delimiter (tspecials) MUST exist between any two tokens, since they would otherwise be interpreted as a single token.
 
 ```
 name = multi-line
@@ -274,6 +274,112 @@ Removal:
 - If the Act Auth Team members are insufficient, the minimum number of audit personnel can be changed as appropriate.
 - Persons on the restricted list are not allowed to participate in the feature adoption or modification except have already participated.
 
+# 4. Centralized Account Model
+
+With the mainstream technology in the times of writing this document, January branch of Act Auth adopts a centralized account model for engineering implementation.
+
+In the centralized account model, account authentication information, such as account identifier, account secret key and so on, is stored in the same storage device or in the same storage cluster. Whether it is stored in centralized database or distributed database, it does not change the nature of centralized account processing. Account authentication information can be stored in multiple copies in case, but only one of them is enabled to avoid data inconsistency caused by read-write conflicts.
+
+## 4.1. Account Registration
+
+Any user who needs to access the services provided by the application program needs to register an account in the application first.
+
+Account registration is not within the scope of this specification, but it usually requires end-users to submit forms through Web pages or native applications, or other application programs to submit forms by HTTP requests.
+
+When an account is being registered, the application program SHALL:
+
+- be clear about the type of this account as described in [Section 4.1.1](#411-account-types),
+- generate internal identifiers, external identifiers and private key for this account refer to [Section 4.1.2](#412-internal-account-identifier) and [Section 4.1.3](#413-external-account-identifier),
+- store the identifiers and other necessary identity information in authentication center or the location that authentication center has access to.
+
+### 4.1.1. Account Types
+
+Account types are typically delimited according to the services of the application program they access. If the application program only provides one service, there is usually only one type of account; If an application program provides two services, there are usually at most three types of accounts. For example, if a todo-list application program provides both read and write services, it MAY contain up to three types of accounts:
+
+read-account
+
+An account type that can only read todo items from todo-list.
+
+write-account
+
+An account type that can only write todo items to todo-list.
+
+read-write-account
+
+An account type that can either write todo items to or read todo items from todo-list.
+
+In addition, if there are other services, such as different accounts can read different todo items, and / or background management services, there will be more possible account types. However, it is not necessary to enumerate all the account types in the practical application program. It is enough to delimit and design the account types that are actually needed.
+
+The specific delimitation of account types is determined by the designer and developer of the application program. Here are some common scenarios of account type delimitation.
+
+end user
+
+End users of services provided by the application program are the most common type of account. For example, the core service provided by Notepad is a long-term storage repository that can be read and written, and its end users are the people who can access this service or other programs with ability and permission to access (e.g. crawlers). There may be more divisions under this. More types of accounts may be subdivided, depending on actual demands.
+
+application program component
+
+An application program (or a project) with complex implementations may be designed and developed into multiple parts that provide internal and / or external services respectively, e.g., log services, gateway services. These parts can be referred to as components of an application program (or project). Application program components also need to access each other's services, e.g., gateway components may need to access services provided by log components to persist access records. Usually when application program components access each other's services through a non-private network, there also need to be authentication center, and then these application program components can be counted as a special type of account to achieve access control.
+
+third-party
+
+This type of accounts is similar to the aforementioned "application program component", except that the registrants of this type of accounts are not parts of the application program (or project), but the "third-party" that provide services independently. Some of services provided by "third-party" MAY depend on the account system (or other data) of the application program, e.g., "Login with Google".
+
+### 4.1.2. Internal Account Identifier
+
+The internal account identifier is a unique integer (or string, tuple, etc.) representing the registration information provided by the registrant, and used to uniquely identify the information and other resources owned by the registrant within the application program. As the name implies, internal account identifiers SHOULD only be used internally in the authentication center of the application program, unless the internal account identifier is the same as the external account identifier value (strongly NOT RECOMMENDED). If the authentication link is built into the application program, the internal account identifier can be used throughout the application program.
+
+The internal account identifier SHOULD be globally unique in an application program, regardless of the account type, but the generation of identifiers can be related to the account type. If the account information of an application program needs to be stored in different contexts (e.g., divide into different tables according to the account type), it is RECOMMENDED that all account identifiers (rather than the full amount of account information) be duplicated in the same context and stored in one more copy in order to ensure the uniqueness of the identifiers. Take relational database as an example:
+
+```
+                                +------------------------------+
+                                | end-user                     |
+                                |------------------------------|
+                                | internal id | nickname | age |
++-------------------------+     |-------------|----------|-----|
+| account                 | +-->| 1           | Alice    | 20  |
+|-------------------------| |+->| 2           | Bob      | 23  |
+| internal id | type      | ||  +------------------------------+
+|-------------|-----------| ||
+| 1           | end-user  |-+|
+| 2           | end-user  |--+  +------------------------------+
+| 3           | 3rd-party |-+   | 3rd-party                    |
++-------------------------+ |   |------------------------------|
+                            |   | internal id | key  | orgname |
+                            |   |-------------|------|---------|
+                            +-->| 3           | abcd | Mofon   |
+                                +------------------------------+
+```
+
+Except for the uniqueness of internal account identifiers, this specification does not specify any other restrictions. Since the internal account identifier is only used within the application program, there can be some internal conventions for identifier, e.g., the data type, length, generation method and so on.
+
+### 4.1.3. External Account Identifier
+
+The external account identifier is a unique integer (or string, tuple, etc.) mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
+
+The external account identifier SHOULD also be globally unique in the application program. An internal account identifier can be mapped to multiple (at least one) external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
+
+The external account identifier should be created at least one at the time of account registration and distributed to the registrant to identify while accessing services provided by the application program. However, because the external account identifier is public, it can only be used as a declaration of identity. The authentication of identity SHOULD rely on other non-public information, such as the private key mentioned in [Section 4.2.1](#421-private-key).
+
+The distinction between internal account identifier and external account identifier means that any one of the external account identifiers of an account can be mapped to the internal account identifier, and then to part or all of the information and resources owned by the account stored explicitly or implicitly in the application program. As mentioned in [Section 5](#5-connect-account), this distinction helps to improve account owner and / or application program control over data that authorized to third-party. If the application program does not need to consider this situation, there can be one more limitation that an internal account identifier must be mapped to only one external account identifier.
+
+### 4.1.4. Account Alias
+
+When an end user accesses a service using the graphical interface provided by the application program, it is always difficult to manually enter long, hard-to-remember account identifiers. Therefore, if the user of the service provided by the application program contains human beings, it is RECOMMENDED to guide the registrant to fill in some globally unique information during account registration, e.g., personal email, mobile phone number, free combination string, etc., as the alias of account identifier.
+
+## 4.2. Account Authentication
+
+### 4.2.1. Private Key
+
+### 4.2.2. Capability Token
+
+### 4.2.3. Signature
+
+### 4.2.4. Encode and Decode
+
+### 4.2.5. With HTTP
+
+# 5. Connect Account
+
 # 7. References
 
 <span id="7.1."></span>7.1. Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
@@ -287,3 +393,5 @@ Removal:
 <span id="7.5."></span>7.5. chrisdavidmills, klez, hbloomer, Andrew_Pfeiffer, "Native - MDN Web Docs Glossary: Definitions of Web-related terms", Mar 2019.
 
 <span id="7.6."></span>7.6. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+
+<span id="7.7."></span>7.7. Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
