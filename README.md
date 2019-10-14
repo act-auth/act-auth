@@ -368,9 +368,15 @@ When an end user accesses a service using the graphical interface provided by th
 
 ## 4.2. Account Authentication
 
+While accessing services provided by the application program through a non-private network, visitors need to declare their identity and provide sufficient credential(s) to verify the validity of the identity for services that are not allowed to be accessed anonymously. This involves two aspects, one is "declaration of identity" and the other is "verification of the validity of the declaration of identity". The former refers to the external account identifier mentioned in [Section 4.1.3](#413-external-account-identifier), while the latter refers to the content of this [Section 4.2](#42-account-authentication).
+
 ### 4.2.1. Private Key
 
-### 4.2.2. Capability Token
+Sufficiently long (relative to the number of accounts of the application program) and random account identifiers can also be used directly as identity credentials, because attackers or disguisers do not have enough computational power to try out legitimate account identifiers -- the premise is ciphertext transmission, e.g., with the help of HTTPS [[7]](#7.7.), and regular updates of external account identifiers.
+
+There is another safer way. During the registration of the account, the application program can generate a private key and sent it to the registrant along with the external account identifier for account authentication. The generation of private key is not within the scope of this specification. It is RECOMMENDED to generate randomly and not too short in length. The data type of private key can be a string or a numerical value etc., as long as it can be converted into binary data by some general encoding.
+
+### 4.2.2. Access Token
 
 ### 4.2.3. Signature
 
@@ -382,16 +388,22 @@ When an end user accesses a service using the graphical interface provided by th
 
 # 7. References
 
-<span id="7.1."></span>7.1. Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
+<span id="7.1."></span>[1] Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
 
-<span id="7.2."></span>7.2. Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
+<span id="7.2."></span>[2] Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
 
-<span id="7.3."></span>7.3. Coded Character Set--7-Bit American Standard Code for Information Interchange, ANSI X3.4-1986.
+<span id="7.3."></span>[3] Coded Character Set--7-Bit American Standard Code for Information Interchange, ANSI X3.4-1986.
 
-<span id="7.4."></span>7.4. Shirey, R., "Internet Security Glossary, Version 2", RFC 4949, August 2007.
+<span id="7.4."></span>[4] Shirey, R., "Internet Security Glossary, Version 2", RFC 4949, August 2007.
 
-<span id="7.5."></span>7.5. chrisdavidmills, klez, hbloomer, Andrew_Pfeiffer, "Native - MDN Web Docs Glossary: Definitions of Web-related terms", Mar 2019.
+<span id="7.5."></span>[5] chrisdavidmills, klez, hbloomer, Andrew_Pfeiffer, "Native - MDN Web Docs Glossary: Definitions of Web-related terms", Mar 2019.
 
-<span id="7.6."></span>7.6. Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+<span id="7.6."></span>[6] Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
 
-<span id="7.7."></span>7.7. Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
+<span id="7.7."></span>[7] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
+
+<span id="7.8."></span>[8] Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
+
+<span id="7.9."></span>[9] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
+
+<span id="7.10."></span>[10] Ben-Kiki, O., Evans, C., and I. Net, "YAML Ain't Markup Language (YAML[TM]) Version 1.2", 3rd Edition, October 2009.
