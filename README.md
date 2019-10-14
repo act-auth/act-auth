@@ -407,9 +407,11 @@ When an end user accesses a service using the graphical interface provided by th
 
 While accessing services provided by the application program through a non-private network, visitors need to declare their identity and provide sufficient credential(s) to verify the validity of the identity for services that are not allowed to be accessed anonymously. This involves two aspects, one is "declaration of identity" and the other is "verification of the validity of the declaration of identity". The former refers to the external account identifier mentioned in [Section 4.1.3](#413-external-account-identifier), while the latter refers to the content of this [Section 4.2](#42-account-authentication).
 
+Upon receipt of a request for a resource owned by an account that lacks credentials, the server can reply with a challenge using the 401 (Unauthorized) status code (RFC7235 Section 3.1 [[9]](#7.9.)). A proxy can respond with a similar challenge using the 407 (Proxy Authentication Required) status code (RFC7235 Section 3.2 [[9]](#7.9.)).
+
 ### 4.2.1. Private Key
 
-Sufficiently long (relative to the number of accounts of the application program) and random account identifiers can also be used directly as identity credentials, because attackers or disguisers do not have enough computational power to try out legitimate account identifiers -- the premise is ciphertext transmission, e.g., with the help of HTTPS [[9]](#7.9.), and regular updates of external account identifiers.
+Sufficiently long (relative to the number of accounts of the application program) and random account identifiers can also be used directly as identity credentials, because attackers or disguisers do not have enough computational power to try out legitimate account identifiers -- the premise is ciphertext transmission, e.g., with the help of HTTPS [[10]](#7.10.), and regular updates of external account identifiers.
 
 There is another safer way. During the registration of the account, the application program can generate a private key and sent it to the registrant along with the external account identifier for account authentication. The generation of private key is not within the scope of this specification. It is RECOMMENDED to generate randomly and not too short in length. The data type of private key can be a string or a numerical value etc., as long as it can be converted into binary data by some general encoding.
 
@@ -439,9 +441,9 @@ There is another safer way. During the registration of the account, the applicat
 
 <span id="7.8."></span>[8] Josefsson, S., "The Base16, Base32, and Base64 Data Encodings", RFC 4648, October 2006.
 
-<span id="7.9."></span>[9] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
+<span id="7.9."></span>[9] Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
 
-<span id="7.10."></span>[10] Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
+<span id="7.10."></span>[10] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
 
 <span id="7.11."></span>[11] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
 
