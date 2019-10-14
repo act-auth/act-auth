@@ -154,6 +154,39 @@ A symbol or process adopted or executed by a system entity with present intentio
 
 Available hardware and software facilities that can provide storage services for an appropriate length of time with both read and write functions usually, such as file systems, stand-alone databases, database clusters, etc.
 
+## 2.5. HTTP Message Syntax
+
+Message Syntax of Hypertext Transfer Protocol [[6]](#7.6.) is used to provide intuitive descriptions and examples in this document. It is RECOMMENDED to understand the general structure and syntax of HTTP messages before reading this document.
+
+For example, this is a HTTP request message using GET method:
+
+```http
+GET /hello.txt HTTP/1.1
+User-Agent: curl/7.16.3
+Host: www.example.com
+Accept-Language: en, mi
+```
+
+In the request message, the first line contains three parts: request method, routing information and protocol version. The next three lines are the request header, and the contents before and after ":" in each line are field name and field value, e.g., the value of "Host" is "www.example.com".
+
+The message structure of the HTTP response is similar to the request message. The two parts of the first line are the protocol version, the response status code and the status message. The next few lines are the response headers.
+
+After the request / response header, it is OPTIONAL to add an empty line followed by the message body of the message, e.g., the message body of the following response message is "Hello World! My payload includes a trailing CRLF.".
+
+```http
+HTTP/1.1 200 OK
+Date: Mon, 27 Jul 2009 12:28:53 GMT
+Server: Apache
+Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
+ETag: "34aa387-d-1568eb00"
+Accept-Ranges: bytes
+Content-Length: 51
+Vary: Accept-Encoding
+Content-Type: text/plain
+
+Hello World! My payload includes a trailing CRLF.
+```
+
 # 3. Specification Management
 
 Act Auth is continuously revised and updated in order to adapt to the changing practical background. In order to avoid confusion, the content of revision and update needs to undergo a strict and unified audit process, and be distinguished by different identifications. This section elaborates the above content and other specification management rules.
@@ -181,7 +214,7 @@ SnakeCaseBranchName = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul"
                       | "aug" | "sep" | "oct" | "nov" | "dec"
 ```
 
-Version naming follows Semantic Versioning [[6]](#7.6.) rules:
+Version naming follows Semantic Versioning [[7]](#7.7.) rules:
 
 ```
 Version = ( MAJOR "." MINOR "." PATCH )
@@ -372,7 +405,7 @@ While accessing services provided by the application program through a non-priva
 
 ### 4.2.1. Private Key
 
-Sufficiently long (relative to the number of accounts of the application program) and random account identifiers can also be used directly as identity credentials, because attackers or disguisers do not have enough computational power to try out legitimate account identifiers -- the premise is ciphertext transmission, e.g., with the help of HTTPS [[7]](#7.7.), and regular updates of external account identifiers.
+Sufficiently long (relative to the number of accounts of the application program) and random account identifiers can also be used directly as identity credentials, because attackers or disguisers do not have enough computational power to try out legitimate account identifiers -- the premise is ciphertext transmission, e.g., with the help of HTTPS [[8]](#7.8.), and regular updates of external account identifiers.
 
 There is another safer way. During the registration of the account, the application program can generate a private key and sent it to the registrant along with the external account identifier for account authentication. The generation of private key is not within the scope of this specification. It is RECOMMENDED to generate randomly and not too short in length. The data type of private key can be a string or a numerical value etc., as long as it can be converted into binary data by some general encoding.
 
@@ -381,8 +414,6 @@ There is another safer way. During the registration of the account, the applicat
 ### 4.2.3. Signature
 
 ### 4.2.4. Encode and Decode
-
-### 4.2.5. With HTTP
 
 # 5. Connect Account
 
@@ -398,12 +429,14 @@ There is another safer way. During the registration of the account, the applicat
 
 <span id="7.5."></span>[5] chrisdavidmills, klez, hbloomer, Andrew_Pfeiffer, "Native - MDN Web Docs Glossary: Definitions of Web-related terms", Mar 2019.
 
-<span id="7.6."></span>[6] Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
+<span id="7.6."></span>[6] Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing", RFC 7230, June 2014.
 
-<span id="7.7."></span>[7] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
+<span id="7.7."></span>[7] Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
 
-<span id="7.8."></span>[8] Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
+<span id="7.8."></span>[8] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
 
-<span id="7.9."></span>[9] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
+<span id="7.9."></span>[9] Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
 
-<span id="7.10."></span>[10] Ben-Kiki, O., Evans, C., and I. Net, "YAML Ain't Markup Language (YAML[TM]) Version 1.2", 3rd Edition, October 2009.
+<span id="7.10."></span>[10] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
+
+<span id="7.11."></span>[11] Ben-Kiki, O., Evans, C., and I. Net, "YAML Ain't Markup Language (YAML[TM]) Version 1.2", 3rd Edition, October 2009.
