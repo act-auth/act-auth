@@ -356,11 +356,27 @@ Except for the uniqueness of internal account identifiers, this specification do
 
 The external account identifier is a unique integer (or string, tuple, etc.) mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
 
-The external account identifier SHOULD also be globally unique in the application program. An internal account identifier can be mapped to multiple external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
+The external account identifier SHOULD also be globally unique in the application program. An internal account identifier can be mapped to multiple (at least one) external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
+
+The external account identifier should be created at least one at the time of account registration and distributed to the registrant to identify while accessing services provided by the application program. However, because the external account identifier is public, it can only be used as a declaration of identity. The authentication of identity SHOULD rely on other non-public information, such as the private key mentioned in [Section 4.2.1](#421-private-key).
 
 The distinction between internal account identifier and external account identifier means that any one of the external account identifiers of an account can be mapped to the internal account identifier, and then to part or all of the information and resources owned by the account stored explicitly or implicitly in the application program. As mentioned in [Section 5](#5-connect-account), this distinction helps to improve account owner and / or application program control over data that authorized to third-party. If the application program does not need to consider this situation, there can be one more limitation that an internal account identifier must be mapped to only one external account identifier.
 
-### 4.1.4. Account Metadata
+### 4.1.4. Account Alias
+
+When an end user accesses a service using the graphical interface provided by the application program, it is always difficult to manually enter long, hard-to-remember account identifiers. Therefore, if the user of the service provided by the application program contains human beings, it is RECOMMENDED to guide the registrant to fill in some globally unique information during account registration, e.g., personal email, mobile phone number, free combination string, etc., as the alias of account identifier.
+
+## 4.2. Account Authentication
+
+### 4.2.1. Private Key
+
+### 4.2.2. Capability Token
+
+### 4.2.3. Signature
+
+### 4.2.4. Encode and Decode
+
+### 4.2.5. With HTTP
 
 # 5. Connect Account
 
