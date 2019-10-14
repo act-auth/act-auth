@@ -383,7 +383,7 @@ The internal account identifier SHOULD be globally unique in an application prog
                                 +------------------------------+
 ```
 
-Except for the uniqueness of internal account identifiers, this specification does not specify any other restrictions. Since the internal account identifier is only used within the application program, there can be some internal conventions for identifier, e.g., the data type, length, generation method and so on.
+Except for the uniqueness of internal account identifiers, this specification does not specify any other restrictions. Since the internal account identifier is only used within the application program, there MAY be some internal conventions for identifier, e.g., the data type, length, generation method and so on.
 
 ### 4.1.3. External Account Identifier
 
@@ -393,7 +393,7 @@ The external account identifier MUST be a unique string composed of "base64url" 
 base64urlCharset = ALPHA | DIGIT | "-" | "_"
 ```
 
-The external account identifier SHOULD also be globally unique in the application program. An internal account identifier can be mapped to multiple (at least one) external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
+The external account identifier SHOULD also be globally unique in the application program. An internal account identifier MAY be mapped to multiple (at least one) external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
 
 The external account identifier should be created at least one at the time of account registration and distributed to the registrant to identify while accessing services provided by the application program. However, because the external account identifier is public, it can only be used as a declaration of identity. The authentication of identity SHOULD rely on other non-public information, such as the private key mentioned in [Section 4.2.1](#421-private-key).
 
