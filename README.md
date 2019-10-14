@@ -387,7 +387,7 @@ Except for the uniqueness of internal account identifiers, this specification do
 
 ### 4.1.3. External Account Identifier
 
-The external account identifier is a unique string composed of "base64url" characters (defined in RFC 4648 Section 5 [[8]](#7.8.)) or other unique data that can be converted or encoded into a string composed of "base64url" characters mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
+The external account identifier MUST be a unique string composed of "base64url" characters (defined in RFC 4648 Section 5 [[8]](#7.8.)) or other unique data that can be converted or encoded into a string composed of "base64url" characters (e.g., the identifier in integer type 123 can be literally converted to the string "123", and the identifier in binary type can be encoded as a string by "base64url") mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
 
 ```
 base64urlCharset = ALPHA | DIGIT | "-" | "_"
