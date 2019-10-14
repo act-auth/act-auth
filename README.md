@@ -317,7 +317,7 @@ In the centralized account model, account authentication information, such as ac
 
 Any user who needs to access the services provided by the application program needs to register an account in the application first.
 
-Account registration is not within the scope of this specification, but it usually requires end-users to submit forms through Web pages or native applications, or other application programs to submit forms by HTTP requests.
+The specific process of the account registration is not within the scope of this specification, but it usually requires end-users to submit forms through Web pages or native applications, or other application programs to submit forms by HTTP requests.
 
 When an account is being registered, the application program SHALL:
 
