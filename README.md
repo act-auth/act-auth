@@ -387,7 +387,7 @@ Except for the uniqueness of internal account identifiers, this specification do
 
 ### 4.1.3. External Account Identifier
 
-The external account identifier is a unique integer (or string, tuple, etc.) mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
+The external account identifier is a unique string composed of "base64url" characters (defined in RFC 4648 Section 5 [[8]](#7.8.)) or other unique data that can be converted or encoded into a string composed of "base64url" characters mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
 
 The external account identifier SHOULD also be globally unique in the application program. An internal account identifier can be mapped to multiple (at least one) external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
 
@@ -405,7 +405,7 @@ While accessing services provided by the application program through a non-priva
 
 ### 4.2.1. Private Key
 
-Sufficiently long (relative to the number of accounts of the application program) and random account identifiers can also be used directly as identity credentials, because attackers or disguisers do not have enough computational power to try out legitimate account identifiers -- the premise is ciphertext transmission, e.g., with the help of HTTPS [[8]](#7.8.), and regular updates of external account identifiers.
+Sufficiently long (relative to the number of accounts of the application program) and random account identifiers can also be used directly as identity credentials, because attackers or disguisers do not have enough computational power to try out legitimate account identifiers -- the premise is ciphertext transmission, e.g., with the help of HTTPS [[9]](#7.9.), and regular updates of external account identifiers.
 
 There is another safer way. During the registration of the account, the application program can generate a private key and sent it to the registrant along with the external account identifier for account authentication. The generation of private key is not within the scope of this specification. It is RECOMMENDED to generate randomly and not too short in length. The data type of private key can be a string or a numerical value etc., as long as it can be converted into binary data by some general encoding.
 
@@ -433,10 +433,12 @@ There is another safer way. During the registration of the account, the applicat
 
 <span id="7.7."></span>[7] Tom Preston-Werner, "Semantic Versioning Specification (SemVer)", Jun 2013.
 
-<span id="7.8."></span>[8] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
+<span id="7.8."></span>[8] Josefsson, S., "The Base16, Base32, and Base64 Data Encodings", RFC 4648, October 2006.
 
-<span id="7.9."></span>[9] Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
+<span id="7.9."></span>[9] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
 
-<span id="7.10."></span>[10] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
+<span id="7.10."></span>[10] Fielding, R., Ed., "Hypertext Transfer Protocol (HTTP/1.1): Authentication", RFC 7235, June 2014.
 
-<span id="7.11."></span>[11] Ben-Kiki, O., Evans, C., and I. Net, "YAML Ain't Markup Language (YAML[TM]) Version 1.2", 3rd Edition, October 2009.
+<span id="7.11."></span>[11] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
+
+<span id="7.12."></span>[12] Ben-Kiki, O., Evans, C., and I. Net, "YAML Ain't Markup Language (YAML[TM]) Version 1.2", 3rd Edition, October 2009.
