@@ -389,6 +389,10 @@ Except for the uniqueness of internal account identifiers, this specification do
 
 The external account identifier is a unique string composed of "base64url" characters (defined in RFC 4648 Section 5 [[8]](#7.8.)) or other unique data that can be converted or encoded into a string composed of "base64url" characters mapping to the internal account identifier of the account. As the name implies, the external account identifier is open to the public.
 
+```
+base64urlCharset = ALPHA | DIGIT | "-" | "_"
+```
+
 The external account identifier SHOULD also be globally unique in the application program. An internal account identifier can be mapped to multiple (at least one) external account identifiers, while an external account identifier MUST only be mapped to one internal account identifier.
 
 The external account identifier should be created at least one at the time of account registration and distributed to the registrant to identify while accessing services provided by the application program. However, because the external account identifier is public, it can only be used as a declaration of identity. The authentication of identity SHOULD rely on other non-public information, such as the private key mentioned in [Section 4.2.1](#421-private-key).
