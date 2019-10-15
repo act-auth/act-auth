@@ -445,6 +445,8 @@ There is another safer way. During the registration of the account, the applicat
 
 <span id="7.10."></span>[10] Rescorla, E., "HTTP Over TLS", RFC 2818, May 2000.
 
-<span id="7.11."></span>[11] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
+<span id="7.11."></span>[11] Franks, J., Hallam-Baker, P., Hostetler, J., Lawrence, S., Leach, P., Luotonen, A., and L. Stewart, "HTTP Authentication: Basic and Digest Access Authentication", RFC 2617, June 1999.
 
-<span id="7.12."></span>[12] Ben-Kiki, O., Evans, C., and I. Net, "YAML Ain't Markup Language (YAML[TM]) Version 1.2", 3rd Edition, October 2009.
+<span id="7.12."></span>[12] Bray, T., Ed., "The JavaScript Object Notation (JSON) Data Interchange Format", RFC 8259, December 2017.
+
+<span id="7.13."></span>[13] Ben-Kiki, O., Evans, C., and I. Net, "YAML Ain't Markup Language (YAML[TM]) Version 1.2", 3rd Edition, October 2009.
